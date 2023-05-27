@@ -1,0 +1,38 @@
+
+
+name: PlanT
+
+training:
+  max_epochs: 50
+  batch_size: 64
+  learning_rate: 1e-4
+  betas: [0.9, 0.95]
+  grad_norm_clip: 1.0
+  weight_decay: 0.1 # only applied on matmul weights
+  ckpt_path: /home/masterthesis/log_junc_0.2/
+  num_workers: 8 # for DataLoader
+  pred_len: 4
+  seq_len: 1
+  max_NextRouteBBs: 2 # max 10 prevents really high ids if route is long
+  input_ego: True
+  remove_velocity: None # input
+  route_only_wp: False # True
+  remove_back: False
+  pretraining_path: True
+  
+
+pre_training:
+  pretraining: forecast #motion forecasting if True
+  multitask: True  #wp & lane & junction classification if True
+  bezier: False   #add bezier if True
+  bezier_order: 4  #smaller than 4
+  forecastLoss_weight: 0.2
+  future_timestep: 1
+  quantize: True
+  precision_pos: 7 # 7: 0.5meters
+  precision_speed: 4 # 4: 3.75km/h
+  precision_angle: 5 # 5: 11.25degrees
+
+network:
+  hf_checkpoint: prajjwal1/bert-medium #prajjwal1/bert-tiny, prajjwal1/bert-mini, prajjwal1/bert-small, prajjwal1/bert-medium
+  embd_pdrop: 0.1

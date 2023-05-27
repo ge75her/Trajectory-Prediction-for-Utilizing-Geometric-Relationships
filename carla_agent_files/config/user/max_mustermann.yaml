@@ -1,0 +1,4 @@
+working_dir: /home/masterthesis/plant
+carla_path: /home/masterthesis/plant/carla
+# working_dir: /home/masterthesis/plant
+# carla_path: ${user.working_dir}/carla
